@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="public/css/prism-dracrula.css">
+    <link rel="stylesheet" href="dev/css/main.css">
+    <title>plantilla</title>
+    <script src="public/js/app.js" type="module" defer> </script>
+  </head>
+  <body class="layout">
+    <div class="container-hamburger"><img class="hamburger" id="hamburger" src="public/assets/icons/hamburger.svg" alt="icon hamburger"></div>
+    <header class="page-header" id="pageHeader">
+      <nav class="main-nav"><img class="close" id="close" src="public/assets/icons/close.svg" alt="close"><a href="./"><img class="logo" src="public/assets/icons/logo.png" alt="logo"></a>
+        <section class="container-menu">
+          <details class="container-cross-menu">
+            <summary class="title-menu">Tema central 1</summary>
+            <ul class="cross-menu">
+              <li class="cross-menu__item"><a class="cross-menu__link" href="public/views/tema-central-1/subtema-1-del-tema-central-1.html">Subtema 1 del tema central 1</a></li>
+            </ul>
+          </details>
+        </section>
+      </nav>
+    </header>
+    <main class="container main" id="main">
+      <h1>Blog template</h1>
+      <section class="main-info">
+        <section class="info">
+          <article class="content">
+            <h2>Primeros pasos </h2>
+            <h3>Instalar dependencias</h3>
+            <p>Una vez clonado el respositorio lo primero que debemos hacer es instalar las dependencias. </p>
+            <p><code>npm install</code></p>
+            <h3>Modificar .gitignore</h3>
+            <p>Es fundamental, tras clonar el proyecto, modificar el archivo .gitignore para asegurarte de que ciertos directorios y archivos no sean seguidos por Git, como por ejemplo evitar todos aquellos archivos que ya no son de producción tal como la carpeta <strong class="ts-2">dev</strong>&nbsp;que es la encargada de todo nuestro entorno de desarrollo.</p>
+          </article>
+          <article class="content">
+            <h2>Estructura </h2>
+            <figure> <img src="public/assets/img/estructura.png" alt="estructura">
+              <figcaption>Estructura de nuestra plantilla.</figcaption>
+            </figure>
+          </article>
+          <article class="content">
+            <h2>gulpFile.babel </h2>
+            <p>Este archivo es el más importante ya que sin el prácticamente no tenemos proyecto. </p>
+            <h3>Task pug</h3>
+            <p>Se encarga de automatizar tareas, en este archivo tenemos 2 tareas automatizadas, una llamada <strong class="ts-3">pug </strong>&nbsp;la cual es encarga de generar exactamente la misma estructura de la ruta <code> ./dev/views/pages/**/*.pug</code>&nbsp; en la carpeta destino que es <code>gulp.dest('./public/views')</code>&nbsp; esto se logra gracias a <code>{ base: './dev/views/pages'}</code>&nbsp; Al agregar la opción base en el método .src(), Gulp conserva la estructura de directorios a partir de la ruta especificada. De este modo, si tienes archivos en subcarpetas dentro de <strong class="ts-1">dev/views/pages</strong>&nbsp;, esas subcarpetas se replicarán dentro de <strong class="ts-1">public/views.</strong></p>
+            <h3>Task indexPug</h3>
+            <p>La segunda tarea es <strong class="ts-3">indexPug </strong>&nbsp; que se encarga de transformar nuestro <strong class="ts-1">index.pug </strong>&nbsp; que se encuentra en la ruta <code>dev/views/index/index.pug</code>&nbsp; a html dentro de la raiz de nuestro archivo.</p>
+            <h3>Task prettify-html </h3>
+            <p>Gulp-prettify es un plugin para Gulp que se utiliza para dar formato y mejorar la legibilidad de los archivos HTML. Este plugin permite ajustar la indentación, eliminar saltos de línea innecesarios y mantener intactos ciertos elementos, como &lt;pre&gt; y &lt;code&gt;. Es especialmente útil en proyectos donde se necesita limpiar o uniformar el código HTML generado automáticamente, como en aquellos que utilizan Pug u otros motores de plantillas. </p>
+          </article>
+          <article class="content">
+            <h2>Ejecutar </h2>
+            <p>Como se explico en el readme.md una vez instalado las dependencias, solo basta con poner en nuestra consola <strong class="ts-1">gulp.</strong></p>
+          </article>
+          <article class="content">
+            <h2>Entorno de desarrollo</h2>
+            <p>Dentro de nuestra estructura de carpetas tenemos la carpeta <strong class="ts-6">dev</strong> que es la carpeta de desarrollo y dentro de esta carpeta tenemos la carpeta <strong class="ts-1">views</strong> donde encontraremos toda la configuración de nuestro sitio.</p>
+            <h3>Carpeta templates </h3>
+            <p>Dentro de esta carpeta encontramos las plantillas principales de nuestro sitio, hay que recordar que esta plantilla fue hecha especialmente para subirla a <strong>Github pages</strong> y es por eso que encontramos 2 plantillas:</p>
+            <table>
+              <thead>
+                <tr>
+                  <th>Plantilla </th>
+                  <th>Uso </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>index-template.pug</td>
+                  <td>Esta plantilla es unicamente para cargarla en la carpeta index, sobre el archivo index.pug ya que hay que recordar que GitHub pages requiere un index en la raiz de nuestro sitio. Esta plantilla ya viene programada con las rutas de nuestro sitio empezando de la raiz hacia los demás archivos.</td>
+                </tr>
+                <tr>
+                  <td>index-template.pug</td>
+                  <td>Esta plantilla contiene lo mismo que index-template solo que viene programada con las rutas empezando de la carpeta actual hasta el archivo indicado. Esta plantilla se utiliza en todas las demás vistas que no es el index.pug</td>
+                </tr>
+              </tbody>
+            </table>
+            <h3>Carpeta config </h3>
+            <p>En este archivo se declaran todas nuestras variables globales, arrays, objetos para que se puedan utilizar globalmente.</p>
+            <p>Aqui declaramos un array llamado <strong class="ts-4">menuRutas</strong>&nbsp; que contiene la siguiente estructura.</p>
+            <div>
+              <pre><code class="language-javascript"> const menuRutas = 
+  [
+     [
+       'Tema central 1',
+           [
+             ['subtema-1-del-tema-central-1','Subtema 1 del tema central 1'],
+             // [....... más subtemas del tema central 1]
+           ]
+     ],
+    // [
+    //  Agregamos todos los demas temas centrales  
+    // ]
+ ]</code></pre>
+            </div>
+            <p>Este array es el encargado de contener la información de nuestro menu lateral izquierdo.</p>
+            <p>Para que la plantilla funcione correctamente es importante seguir el orden siguiente. </p>
+            <div>
+              <pre><code class="language-javascript"> const menuRutas = 
+  [
+     [
+       'Tema central 1', // Sera el nombre de nuestra carpeta pero con guiones 
+           [
+             //1er elemento es el nombre de la dirección del archivo.pug  
+             //2do elemento es el nombre que se visualizará en pantalla como link
+             /*Es muy importante que el primer elemento tenga el mismo nombre que 
+             el segundo elemento solo que unido con guiones.*/ 
+             ['subtema-1-del-tema-central-1','Subtema 1 del tema central 1'],
+           ]
+     ]
+ ]</code></pre>
+            </div>
+            <p>Así quedaria nuestra carpeta <strong class="ts-2">pages</strong>&nbsp;que es la encargada de contener todas nuestras paginas ordenadas por carpetas de cada tema.</p><img src="public/assets/img/menuRutas.png" alt="menu rutas">
+            <p>Y como segundo arreglo tenemos <code>-let submenuLinks = []   </code>&nbsp; que es una matriz en realidad y está vacia por el momento, ya que está aquí para ser ocupada de manera global en cualquier pagina de nuestro sitio y que tendrá la siguiente estructura.</p>
+            <div>
+              <pre><code class="language-javascript">    
+                  <let>submenuLinks = [['id','Nombre del subtema']] </let></code></pre>
+            </div>
+            <p>Esta matriz se encarga de estructurar los enlaces con sus id a cada subtema del tema central, ya que la plantilla cuenta con un submenu lateral derecho, para poder movernos mas fácilmente a través de la página.</p>
+            <h3>Agregar contenido</h3>
+            <p>Para agregar contenido tomaremos como ejemplo, el archivo <strong class="ts-2">subtema-1-del-tema-central-1.pug </strong>que se encuentra dentro de la carpeta <strong>tema-centra-1 </strong>este procedimiento es el mismo para todos los demás archivos, a exepción de un pequeño detalle que veremos a continuación.</p>
+            <picture>
+              <source srcset="./public/assets/img/agregar-contenido-mobile.png" media="(max-width: 500px)">
+              <source srcset="./public/assets/img/agregar-contenido.png" media="(min-width: 720px)"><img src="./public/assets/img/agregar-contenido.png" alt="agregar contenido">
+            </picture>
+            <h4>Highlight words </h4>
+            <ul>
+              <li>
+                <p><strong>strong.ts-1 &nbsp; <strong class="ts-1">Hello </strong></strong></p>
+              </li>
+              <li>
+                <p><strong>strong.ts-2 &nbsp; <strong class="ts-2">Hello </strong></strong></p>
+              </li>
+              <li>
+                <p><strong>strong.ts-3 &nbsp; <strong class="ts-3">Hello </strong></strong></p>
+              </li>
+              <li>
+                <p><strong>strong.ts-4 &nbsp; <strong class="ts-4">Hello </strong></strong></p>
+              </li>
+              <li>
+                <p><strong>strong.ts-5 &nbsp; <strong class="ts-5">Hello </strong></strong></p>
+              </li>
+              <li>
+                <p><strong>strong.ts-6 &nbsp; <strong class="ts-6">Hello</strong></strong></p>
+              </li>
+            </ul>
+            <h4>Interpolando correctamente elementos </h4>
+            <p>Cuando nosotros queremos poner elementos de línea dentro de un elemento bloque para no tener resultados inesperados debemos seguir las siguientes intrucciones, primero veamos nuestro ejemplo.</p>
+            <figure> <img src="public/assets/img/interpolacion-1.png" alt="Ejemplo 1 de interpolacion">
+              <figcaption>Código pug interpolado con explicación</figcaption>
+            </figure>
+            <figure> <img src="public/assets/img/interpolacion-2.png" alt="Ejemplo 2 de interpolacion">
+              <figcaption>Código pug interpolado sin comentarios</figcaption>
+            </figure>
+            <p><strong class="ts-1">RESULTADO:</strong></p>
+            <p>Esto es un <strong class="ts-2">ejemplo</strong> de interpolación. </p>
+            <p class="note">Muy importante siempre que interpolemos etiquetas de línea hay que recordar no agregar un espacio después de la ultima palabra y si utilizamos el pipe (|) es necesario indentar con tab para que se agregue un espacio. </p>
+            <h4>Link</h4>
+            <ul>
+              <li>
+                <p><strong>a.link &nbsp; <a class="link" href="#"> Soy un link </a></strong></p>
+              </li>
+            </ul>
+            <h4>Notas</h4>
+            <ul>
+              <li>
+                <p><strong>p.note &nbsp; <p class="note">Soy una nota de recordatorio</p></strong></p>
+              </li>
+              <li>
+                <p><strong>p.note.note--warning &nbsp; <p class="note note--warning">Soy una nota de advertencia</p></strong></p>
+              </li>
+              <li>
+                <p><strong>p.note.note--error &nbsp; <p class="note note--error">Soy una nota de error</p></strong></p>
+              </li>
+            </ul>
+            <h4>Table </h4>
+            <p>Para una tabla utilizamos una tabla común en html, solo que ocupamos la sintaxis de pug.</p>
+            <table>
+              <thead>
+                <tr>
+                  <th>Encabezado 1</th>
+                  <th>Encabezado 2</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Fila 1, Columna 1</td>
+                  <td>Fila 1, Columna 2</td>
+                </tr>
+                <tr>
+                  <td>Fila 2, Columna 1</td>
+                  <td>Fila 2, Columna 2</td>
+                </tr>
+                <tr>
+                  <td>Fila 3, Columna 1</td>
+                  <td>Fila 3, Columna 2</td>
+                </tr>
+                <tr>
+                  <td>Fila 4, Columna 1</td>
+                  <td>Fila 4, Columna 2</td>
+                </tr>
+              </tbody>
+            </table>
+            <h4>Fragmento de código </h4>
+            <p>Para poder utilizar fragmentos de código en la página, necesitamos utilizar la siguiente línea </p>
+            <p><code>div: pre: code.language-javascript</code></p>
+            <p>Para especificar el tipo de lenguaje a mostrar solo necesitamos cambiar la clase <strong>language-TipoDeLenguaje </strong>En nuestra plantilla solo tenemos disponibles los lenguajes de: </p>
+            <p> <strong class="ts-1">html </strong>&nbsp;<strong class="ts-2">css </strong>&nbsp;<strong class="ts-3">javascript </strong>&nbsp;<strong class="ts-4">typeScript </strong>&nbsp;<strong class="ts-5">react-jsx </strong>&nbsp;<strong class="ts-6">react-tsx </strong>&nbsp;<strong class="ts-2">json </strong>&nbsp;<strong class="ts-5">git </strong>&nbsp;<strong class="ts-4">bash </strong></p>
+          </article>
+          <article class="content">
+            <h2>Entorno de producción CSS</h2>
+            <p>Esta plantilla está utilizando <strong class="ts-5">postcss</strong>&nbsp;para el código <code>css</code>&nbsp;en producción, utilizando los plugins de <strong class="ts-2">autoprefixer</strong>, <strong class="ts-3">postcss-preset-env</strong>,<strong class="ts-4">cssnano</strong></p>
+            <p>Y tambien hacemos uso de <code>.browserslist</code></p>
+            <h3>Postcss </h3>
+            <p>PostCSS es una herramienta para transformar CSS usando plugins de JavaScript. Básicamente, PostCSS permite que tu CSS sea procesado por una serie de plugins que pueden realizar diversas tareas, como optimización, análisis, y añadidura de nuevas funcionalidades. A diferencia de preprocesadores como Sass o Less, PostCSS es más modular y flexible, ya que te permite usar solo los plugins que necesites.</p>
+            <h3>Plugins postcss </h3>
+            <ul>
+              <li>
+                <p><strong class="ts-2">Autoprefixer:</strong></p>
+                <p>Agrega automáticamente los prefijos necesarios para que tu CSS sea compatible con diferentes navegadores. Por ejemplo, transforma propiedades como display: flex; en algo como -webkit-display: flex; para asegurarse de que funcione en versiones más antiguas de navegadores. </p>
+              </li>
+              <li>
+                <p><strong class="ts-2">postcss-preset-env: </strong></p>
+                <p>Este plugin te permite utilizar las futuras características de CSS hoy. Es como Babel para JavaScript, pero para CSS. Convierte las nuevas sintaxis CSS en un formato que los navegadores actuales puedan entender, basándose en la configuración de compatibilidad de navegadores.</p>
+              </li>
+              <li>
+                <p><strong class="ts-2">cssnano: </strong></p>
+                <p>Este plugin es un optimizador de CSS que reduce el tamaño de los archivos eliminando espacios en blanco, comentarios y otras cosas innecesarias, haciendo tu CSS más ligero y rápido de cargar.</p>
+              </li>
+            </ul>
+            <h3>¿Qué es .browserslistrc?</h3>
+            <p>El archivo .browserslistrc es un archivo de configuración que se pone en la raiz del proyecto, especifica qué navegadores y versiones quieres soportar en tu proyecto. PostCSS y otros herramientas como Autoprefixer utilizan esta configuración para saber qué prefijos o transformaciones necesitan aplicar a tu CSS. Por ejemplo, puedes definir que tu CSS debe ser compatible con las dos últimas versiones de los navegadores más populares. </p><img src="public/assets/img/browserslistrc.png" alt="browserslistrc">
+            <h3>¿Qué es el archivo postcss.config.js?</h3>
+            <p>El archivo postcss.config.js se pone en la raiz del proyecto, es donde defines la configuración de PostCSS, incluyendo qué plugins deseas utilizar y cómo deben comportarse. Aquí es donde puedes especificar, por ejemplo, que quieres usar Autoprefixer y cssnano, y cómo deben interactuar con tu CSS. </p><img src="public/assets/img/postcssconfig.png" alt="archivo postcss.config">
+            <h3>Preparando el entorno de CSS a producción </h3>
+            <p>Cuando estemos agregando información a nuestro blog es necesario tener linkado los estilos en modo desarrollo.</p>
+            <figure> <img src="public/assets/img/css-desarrollo.png" alt="css">
+              <figcaption>Este es un ejemplo del archivo template.</figcaption>
+            </figure>
+            <p>Una vez que terminamos de agregar información y estemos listos para subir a producción es necesario cambiar las rutas del linkado de los estilos a modo de producción.</p>
+            <p>Pero antes es necesario haber preparados nuestros estilos a modo de producción.</p>
+            <p>Nuestra plantilla utiliza la dependencia de <code>npm-run-all</code>&nbsp;para ejecutar varios comandos en paralelo.</p>
+            <p>Veamos la configuración de nuestro script para ejecutar estos comandos en paralelo.</p>
+            <div>
+              <pre><code class="language-json"> "scripts": {
+   "build:css": "npm-run-all --parallel build:css:*",
+   "build:css:file1": "postcss dev/css/base.css --no-map -o public/css/base.css",
+   "build:css:file2": "postcss dev/css/layout.css --no-map -o public/css/layout.css",
+   "build:css:file3": "postcss dev/css/components.css --no-map -o public/css/components.css",
+   "build:css:file4": "postcss dev/css/utilities.css --no-map -o public/css/utilities.css"
+},</code></pre>
+            </div>
+            <p><strong>Explicación</strong></p>
+            <ul>
+              <li>
+                <p><strong class="ts-1">npm-run-all --parallel build:css:*</strong></p>
+                <p>
+                  <u>Ejecuta todos los scripts que comienzan con build:css: en paralelo</u>. Esto significa que todos los archivos CSS especificados en los scripts se procesarán simultáneamente.
+                </p>
+              </li>
+              <li>
+                <p><strong class="ts-1">postcss dev/css/base.css --no-map -o public/css/base.css</strong></p>
+                <p>Procesa el archivo base.css con PostCSS, omitiendo los mapas de origen y guardando la salida en public/css/base.css.</p>
+              </li>
+              <li>
+                <p><strong class="ts-1">postcss dev/css/layout.css --no-map -o public/css/layout.css</strong></p>
+                <p>Similar al anterior, pero para layout.css, y asi con todos los demás. </p>
+                <p>Si tuvieramos más archivos, deberiamos agregarlo para su transformación a producción.</p>
+              </li>
+            </ul>
+            <p>Para ejecutar este script solo escribimos en consola el siguiente comando </p>
+            <div>
+              <pre><code class="language-bash"> npm run build:css</code></pre>
+            </div>
+            <p>Una vez hecho esto ahora si podemos subir nuestro código css a producción. </p>
+          </article>
+        </section>
+      </section>
+    </main>
+    <script src="public/js/prism-whitespace.js"></script>
+  </body>
+</html>
